@@ -3,17 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Chatbot</title>
+  <title>AI Companion</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="chat-container">
+  <!-- Character Selection -->
+  <div class="character-selection">
+    <h1>Choose Your Companion</h1>
+    <button class="select-companion" data-character="Eva">Talk to Eva</button>
+    <button class="select-companion" data-character="Adam">Talk to Adam</button>
+  </div>
+
+  <!-- Chat Interface -->
+  <div class="chat-container hidden">
+    <button class="back-button">Back to Selection</button>
     <div class="messages"></div>
     <div class="input-container">
       <input class="message_input" type="text" placeholder="Type your message here..." />
       <button class="send_message">Send</button>
     </div>
   </div>
+
   <script src="js/script.js"></script>
 </body>
 </html>
