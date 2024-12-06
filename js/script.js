@@ -79,14 +79,14 @@ function addMessage(text, sender) {
   return messageDiv;
 }
 
-// Event listeners for character selection
+
 selectCompanionButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     selectedCompanion = e.target.dataset.character;
     characterSelection.classList.add("hidden");
     chatContainer.classList.remove("hidden");
 
-    // Add an initial message for the selected companion
+   
     const initialMessage =
       selectedCompanion === "Eva"
         ? "Hi love! How was your day? ❤️"
@@ -95,12 +95,12 @@ selectCompanionButtons.forEach((button) => {
   });
 });
 
-// Event listener for "Back to Selection" button
+
 backButton.addEventListener("click", () => {
-  // Clear chat messages
+  
   messagesContainer.innerHTML = "";
 
-  // Hide chat container and show character selection
+ 
   chatContainer.classList.add("hidden");
   characterSelection.classList.remove("hidden");
 
@@ -114,4 +114,33 @@ loadAPIKey().then(() => {
   messageInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") handleMessage();
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const heartsContainer = document.createElement("div");
+  heartsContainer.classList.add("hearts-container");
+  document.body.appendChild(heartsContainer);
+
+  const createHeart = () => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    
+    const size = Math.random() * 30 + 20; 
+    heart.style.width = '70px';
+    heart.style.height = `60px`;
+    heart.style.left = `${Math.random() * 100}vw`; 
+    heart.style.bottom = `0`; 
+    heartsContainer.appendChild(heart);
+
+    
+    setTimeout(() => {
+      heart.remove();
+    }, 3000); 
+  };
+
+ 
+  for (let i = 0; i < 20; i++) {
+    setTimeout(createHeart, i * 200); 
+  }
 });
