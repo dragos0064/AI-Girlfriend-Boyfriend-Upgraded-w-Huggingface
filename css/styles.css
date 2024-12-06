@@ -2,11 +2,26 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: url('Eros.jpg') no-repeat center center fixed; /* Add the background image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-color: rgba(0, 0, 0, 0.5); /* Add fallback color if image doesn't load */
   background-color: #f4f4f9;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* This creates the faded effect */
+  z-index: -1; /* Push it behind all content */
 }
 
 .hidden {
@@ -15,22 +30,22 @@ body {
 
 .character-selection {
   text-align: center;
-  padding: 150px;
+  padding: 50px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .character-selection h1 {
-  font-size: 40px;
+  font-size: 30px;
   color: #333;
   margin-bottom: 20px;
 }
 
 .character-selection button {
-  padding: 20px 60px;
-  font-size: 30px;
-  margin: 40px;
+  padding: 15px 30px;
+  font-size: 20px;
+  margin: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -52,53 +67,67 @@ body {
 }
 
 .chat-container {
-  width: 100%;
-  max-width: 400px;
+  width: 80%;
+  height: 90%;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: hidden;
   flex-direction: column;
   overflow: hidden;
+  max-height: 800px;
 }
 
 .messages {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
   overflow-y: auto;
-  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70vh; /* Limit the height to make it scrollable */
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 .message {
+  max-width: 60%;
   margin: 10px 0;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 80%;
-  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 16px;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 
 .message.user {
   background-color: #4285f4;
   color: white;
   align-self: flex-end;
+  border-top-right-radius: 0;
 }
 
 .message.bot {
   background-color: #f1f1f1;
   color: #333;
   align-self: flex-start;
+  border-top-left-radius: 0;
 }
 
 .input-container {
   display: flex;
-  padding: 20px;
+  padding: 15px;
   border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+  position: absolute;
+  bottom: 40px;
+  width: 80%;
+  box-sizing: border-box;
 }
 
 .message_input {
   flex: 1;
   padding: 10px;
-  font-size: 20px;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-right: 10px;
@@ -111,7 +140,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .send_message:hover {
@@ -125,7 +154,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
   margin: 10px;
   align-self: flex-start;
 }

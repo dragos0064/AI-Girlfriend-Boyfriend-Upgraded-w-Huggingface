@@ -71,6 +71,7 @@ function addMessage(text, sender) {
   const messageDiv = document.createElement("div");
   messageDiv.className = `message ${sender}`;
   messageDiv.textContent = text;
+  const messagesContainer = document.querySelector(".messages");
   messagesContainer.appendChild(messageDiv);
 
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
